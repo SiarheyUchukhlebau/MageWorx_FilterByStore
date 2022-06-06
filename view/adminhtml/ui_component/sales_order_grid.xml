@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <dataSource name="sales_order_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters">
+            <filterSelect name="store" class="Magento\Ui\Component\Filters\Type\Select" provider="${ $.parentName }">
+                <settings>
+                    <options class="MageWorx\FilterByStore\Ui\Component\Listing\Column\Store\Options"/>
+                    <caption translate="true">All Stores</caption>
+                    <label translate="true">Stores</label>
+                    <dataScope>store</dataScope>
+                    <imports>
+                        <link name="visible">ns = ${ $.ns }, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+    </listingToolbar>
+</listing>
